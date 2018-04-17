@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+    <companyName desc="Название компании">Skills.</companyName>
+    <description desc="Описание сайта">Обучение по электронным закупкам. Государственным закупки и закупки, организованные "ФНБ "Самрук-Казына" в Алматы</description>
+    <footer desc="Футер сайта"/>
+    <phone desc="Телефон">+7 707 777 77 77</phone>
+    <adress desc="Адрес">ул. Абая, 290д</adress>
+</site>

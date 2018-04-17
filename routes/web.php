@@ -1,5 +1,7 @@
 <?php
 
+use App\Post;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +14,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index', [
+    	'posts' => Post::latest()->limit(3)->get()
+    ]);
 });
