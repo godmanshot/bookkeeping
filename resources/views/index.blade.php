@@ -3,6 +3,56 @@
 
 @section('title', 'Главная')
 
+
+@section('endhead')
+    <link rel="stylesheet" type="text/css" href="dist/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="dist/slick/slick-theme.css"/>
+@endsection
+
+@section('endbody')
+    <script type="text/javascript" src="dist/slick/slick.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.services').slick({
+            adaptiveHeight: true,
+            arrows: false,
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [
+                {
+                  breakpoint: 1024,
+                  settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                  }
+                },
+                {
+                  breakpoint: 480,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                  }
+                }
+            ]
+        });
+    });
+    </script>
+@endsection
+
+
+
 @section('hero-area')
 <!-- Hero Area Start -->
 <div id="hero-area" class="hero-area-bg">
@@ -59,6 +109,29 @@
   </div>
 </section>
 <!-- About Section End -->
+
+{{-- 
+<section id="services" class="section-padding">
+  <div class="container">
+    <h2 class="section-title wow flipInX" data-wow-delay="0.4s">Курсы</h2>
+    <div class="row">
+      <div class="services">
+        @foreach($services as $service)
+            <div class="service">
+                <div class="price-box">
+                    <a href=""><h2 class="pricing-plan">{{ $service->name }}</h2></a>
+                    <div class="image"><div style="background-image: url({{ $service->imgMiniPath() }});" class="img"></div></div>
+                    <p class="service-price">{{ $service->price() }}</p>
+                    <a href="" class="btn btn-primary btn-outline with-arrow btn-sm">Подробнее <i class="icon-arrow-right"></i></a>
+                </div>
+            </div>
+        @endforeach
+      </div>
+    </div>
+  </div>
+</section>
+ --}}
+
 <!-- Portfolio Section -->
 <section id="portfolios" class="section-padding">
   <!-- Container Starts -->

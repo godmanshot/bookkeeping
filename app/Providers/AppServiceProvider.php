@@ -28,6 +28,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        View::share('_settings', new SiteSetting(__DIR__.'/../../settings.xml'));
+        $this->app->singleton('site-setting', function ($app) {
+            return new SiteSetting(__DIR__.'/../../settings.xml');
+        });
+        $this->app->singleton('site-block', function ($app) {
+            return new SiteSetting(__DIR__.'/../../site-block.xml');
+        });
+        View::share('_settings', resolve('site-setting'));
+        View::share('_blocks', resolve('site-block'));
     }
 }

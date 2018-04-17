@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+    <companyName desc="Название компании">&lt;p&gt;Skills.&lt;/p&gt;</companyName>
+    <description desc="Описание сайта">&lt;p&gt;Обучение по электронным закупкам. Государственным закупки и закупки, организованные &amp;quot;ФНБ &amp;quot;Самрук-Казына&amp;quot; в Алматы&lt;/p&gt;</description>
+    <footer desc="Футер сайта"></footer>
+    <phone desc="Телефон">&lt;p&gt;+7 707 777 77 77&lt;/p&gt;</phone>
+    <adress desc="Адрес">&lt;p&gt;ул. Абая, 290дdddd&lt;/p&gt;</adress>
+</site>

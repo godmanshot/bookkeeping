@@ -27,8 +27,13 @@
     <link rel="icon" href="{{ asset('assets/img/logo-icon_32x32.png') }}" sizes="32x32">
     <link rel="icon" href="{{ asset('assets/img/logo-icon_192x192.png') }}" sizes="192x192">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/img/logo-icon_180x180.png') }}">
+
+        @yield('endhead')
+
   </head>
   <body>
+
+        @yield('beginbody')
 
     <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
@@ -153,5 +158,7 @@
     <script src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
       
+        @yield('endbody')
+        
   </body>
 </html>
