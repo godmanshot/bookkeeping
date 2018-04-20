@@ -10,33 +10,17 @@ use Intervention\Image\Facades\Image;
 
 class ServicesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $services = Service::latest()->paginate(20);
         return view('admin.services.index', compact('services'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function create()
     {
         return view('admin.services.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -47,10 +31,8 @@ class ServicesController extends Controller
         ]);
 
         $path = $request->file('img')->store('img/services', 'public');
-		$image = Image::make('storage/'.$path);
-        $image->fit(1920, 700)->save();
-        $image->fit(150, 150)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg');
-		$image->destroy();
+        Image::make('storage/'.$path)->fit(250, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg')->destroy();
+        Image::make('storage/'.$path)->fit(1920, 700)->save()->destroy();
 
         $service = Service::create([
             'name' => $request->name,
@@ -63,24 +45,11 @@ class ServicesController extends Controller
         return redirect()->route('admin.services');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Service $service)
     {
         return view('admin.services.edit', compact('service'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Service $service)
     {
         $request->validate([
@@ -95,10 +64,8 @@ class ServicesController extends Controller
         	Storage::disk('public')->delete(str_replace(".jpeg", "", $service->img).'-min.jpeg');
 
             $path = $request->file('img')->store('img/services', 'public');
-			$image = Image::make('storage/'.$path);
-			$image->fit(1920, 700)->save();
-			$image->fit(150, 150)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg');
-			$image->destroy();
+            Image::make('storage/'.$path)->fit(250, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg')->destroy();
+			Image::make('storage/'.$path)->fit(1920, 700)->save()->destroy();
 
             $service->img = $path;
 
@@ -116,12 +83,6 @@ class ServicesController extends Controller
         return redirect()->route('admin.services');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Service  $service
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Service $service)
     {
         Storage::disk('public')->delete($service->img);

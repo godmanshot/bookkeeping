@@ -71,11 +71,13 @@
             <li><a href="{{ route('home') }}" target="_blank"><i class="fa fa-window-maximize"></i>Перейти на сайт</a></li>
           </ul><span class="heading">Настройки</span>
           <ul class="list-unstyled">
-            <li> <a href="{{ route('admin.settings') }}"> <i class="icon-interface-windows"></i>Сайт</a></li>
-            <li> <a href="{{ route('admin.info_blocks') }}"> <i class="fa fa-bookmark-o"></i>Блоки</a></li>
+            <li> <a href="{{ route('admin.settings') }}"> <i class="icon-interface-windows"></i>Настройки сайта</a></li>
+            {{-- <li> <a href="{{ route('admin.info_blocks') }}"> <i class="fa fa-bookmark-o"></i>Блоки</a></li> --}}
           </ul><span class="heading">Контент</span>
           <ul class="list-unstyled">
-            <li><a href="{{ route('admin.services') }}"><i class="fa fa-bars"></i>Услуги</a></li>
+            <li><a href="{{ route('admin.services') }}"><i class="fa fa-bars"></i>Курсы</a></li>
+            <li><a href="{{ route('admin.posts') }}"><i class="fa fa-bars"></i>Новости</a></li>
+            <li><a href="{{ route('admin.pages') }}"><i class="fa fa-bars"></i>Страницы</a></li>
         </nav>
         <div class="content-inner">
           

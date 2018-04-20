@@ -1,26 +1,19 @@
 @extends('admin.layouts.app')
 
 @section('endhead')
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0/css/froala_style.min.css" rel="stylesheet" type="text/css" />
+<link href="{{asset('admin-dist/summernote/summernote-lite.css')}}" rel="stylesheet">
 @endsection
 
 @section('endbody')
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.6.0//js/froala_editor.pkgd.min.js"></script>
-  <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/froala-editor/2.7.3/js/languages/ru.js'></script>
-  
-  <script>
-    $(function() {
-      $('textarea').froalaEditor({
-        language: 'ru',
-        height: 500
-      })
+<script src="{{asset('admin-dist/summernote/summernote-lite.js')}}"></script>
+<script>
+  $(document).ready(function() {
+    $('#services-body').summernote({
+      lang: 'ru-RU',
+      minHeight: 300
     });
-  </script>
+  });
+</script>
 @endsection
 
 @section('content')
@@ -28,14 +21,14 @@
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Услуги</h2>
+              <h2 class="no-margin-bottom">Курсы</h2>
             </div>
           </header>
           <!-- Breadcrumb-->
           <ul class="breadcrumb">
             <div class="container-fluid">
               <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Главная</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('admin.services') }}">Услуги</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.services') }}">Курсы</a></li>
               <li class="breadcrumb-item active">Новая запись</li>
             </div>
           </ul>

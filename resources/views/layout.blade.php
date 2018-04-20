@@ -48,37 +48,37 @@
               <span class="icon-menu"></span>
               <span class="icon-menu"></span>
             </button>
-            <a href="index.html" class="navbar-brand"><img src="{{ asset('assets/img/logo.png') }}" alt=""></a>
+            <a href="{{route('home')}}" class="navbar-brand"><img src="{{ asset('assets/img/logo.png') }}" alt=""></a>
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="onepage-nev navbar-nav mr-auto w-100 justify-content-end clearfix">
-              <li class="nav-item active">
-                <a class="nav-link" href="#hero-area">
+              <li class="nav-item">
+                <a class="nav-link" href="{{route('home')}}">
                   Главная
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#О нас">
+                <a class="nav-link" href="{{route('about')}}">
                   О нас
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#Акции">
+                <a class="nav-link" href="{{route('shares')}}">
                   Акции
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#Курсы">
+                <a class="nav-link" href="{{route('services')}}">
                   Курсы
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#portfolios">
+                <a class="nav-link" href="{{route('offer')}}">
                   Оферта
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#Контакты">
+                <a class="nav-link" href="{{route('contacts')}}">
                   Контакты
                 </a>
               </li>
@@ -89,22 +89,22 @@
         <!-- Mobile Menu Start -->
         <ul class="onepage-nev mobile-menu">
           <li>
-            <a href="#Главная">Главная</a>
+            <a href="{{route('home')}}">Главная</a>
           </li>
           <li>
-            <a href="#О нас">О нас</a>
+            <a href="{{route('about')}}">О нас</a>
           </li>
           <li>
-            <a href="#Акции">Акции</a>
+            <a href="{{route('shares')}}">Акции</a>
           </li>
           <li>
-            <a href="#Курсы">Курсы</a>
+            <a href="{{route('services')}}">Курсы</a>
           </li>
           <li>
-            <a href="#portfolio">Оферта</a>
+            <a href="{{route('offer')}}">Оферта</a>
           </li>
           <li>
-            <a href="#Контакты">Контакты</a>
+            <a href="{{route('contacts')}}">Контакты</a>
           </li>
         </ul>
         <!-- Mobile Menu End -->
@@ -127,11 +127,28 @@
           <div class="col-md-12">
             <div class="footer-text text-center wow fadeInDown" data-wow-delay="0.3s">
               <ul class="social-icon">
-                <li>
-                  <a class="instagram" href="#"><i class="icon-social-instagram"></i></a>
-                </li>
+                @if(!empty((string)$_settings->instagram))
+                  <li>
+                    <a class="instagram" href="{{$_settings->instagram}}"><i class="icon-social-instagram"></i></a>
+                  </li>
+                @endif
+                @if(!empty((string)$_settings->facebook))
+                  <li>
+                    <a class="facebook" href="{{$_settings->facebook}}"><i class="icon-social-facebook"></i></a>
+                  </li>
+                @endif
+                @if(!empty((string)$_settings->vkontakte))
+                  <li>
+                    <a class="vkontakte" href="{{$_settings->vkontakte}}"><i class="icon-social-vkontakte"></i></a>
+                  </li>
+                @endif
+                @if(!empty((string)$_settings->phonebtn))
+                  <li>
+                    <a class="phonebtn" href="tel:{{$_settings->phonebtn}}"><i class="icon-phone"></i></a>
+                  </li>
+                @endif
               </ul>
-              <p>Copyright © 2018 UIdeck All Right Reserved</p>
+              <p>{{$_settings->footer}}</p>
             </div>
           </div>
         </div>

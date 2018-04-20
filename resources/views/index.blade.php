@@ -13,7 +13,7 @@
     <script type="text/javascript" src="dist/slick/slick.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
-        $('.services').slick({
+        $('.courses').slick({
             adaptiveHeight: true,
             arrows: false,
             dots: true,
@@ -65,12 +65,30 @@
           <p class="script-font wow fadeInUp" data-wow-delay="0.2s">Учебный центр «Школа учета»</p>
           <p class="script-font wow fadeInUp" data-wow-delay="0.6s"></p>
           <ul class="social-icon wow fadeInUp" data-wow-delay="0.8s">
-            <li>
-              <a class="instagram" href="#"><i class="icon-social-instagram"></i></a>
-            </li>
+            @if(!empty((string)$_settings->instagram))
+              <li>
+                <a class="instagram" href="{{$_settings->instagram}}"><i class="icon-social-instagram"></i></a>
+              </li>
+            @endif
+            @if(!empty((string)$_settings->facebook))
+              <li>
+                <a class="facebook" href="{{$_settings->facebook}}"><i class="icon-social-facebook"></i></a>
+              </li>
+            @endif
+            @if(!empty((string)$_settings->vkontakte))
+              <li>
+                <a class="vkontakte" href="{{$_settings->vkontakte}}"><i class="icon-social-vkontakte"></i></a>
+              </li>
+            @endif
+            @if(!empty((string)$_settings->phonebtn))
+              <li>
+                <a class="phonebtn" href="tel:{{$_settings->phonebtn}}"><i class="icon-phone"></i></a>
+              </li>
+            @endif
           </ul>
           <div class="header-button wow fadeInUp" data-wow-delay="1s">
-            <a href="#" class="btn btn-common">О нас</a>
+            <a href="{{route('about')}}" class="btn btn-common">О нас</a>
+            <a href="{{route('services')}}" class="btn btn-common">Курсы</a>
           </div>
         </div>
       </div>
@@ -110,27 +128,26 @@
 </section>
 <!-- About Section End -->
 
-{{-- 
-<section id="services" class="section-padding">
+
+<section id="courses" class="section-padding">
   <div class="container">
     <h2 class="section-title wow flipInX" data-wow-delay="0.4s">Курсы</h2>
     <div class="row">
-      <div class="services">
+      <div class="courses" style="width: 100%;">
         @foreach($services as $service)
-            <div class="service">
-                <div class="price-box">
-                    <a href=""><h2 class="pricing-plan">{{ $service->name }}</h2></a>
-                    <div class="image"><div style="background-image: url({{ $service->imgMiniPath() }});" class="img"></div></div>
-                    <p class="service-price">{{ $service->price() }}</p>
-                    <a href="" class="btn btn-primary btn-outline with-arrow btn-sm">Подробнее <i class="icon-arrow-right"></i></a>
-                </div>
-            </div>
+          <div class="course">
+            <a href="{{route('services.show', $service)}}">
+              <img src="{{$service->imgMiniPath()}}" class="course__image">
+              <p class="course__name">{{$service->name}}</p>
+              <p class="course__price">{{$service->price()}}</p>
+            </a>
+          </div>
         @endforeach
       </div>
     </div>
   </div>
 </section>
- --}}
+
 
 <!-- Portfolio Section -->
 <section id="portfolios" class="section-padding">
@@ -244,16 +261,16 @@
             @foreach($posts as $post)
             <li>
               <div class="content-text">
-                <h3 class="line-title">{{ $post->title }}</h3>
+                <h3 class="line-title"><a href="{{ route('posts.show', $post) }}">{{ $post->title }}</a></h3>
                 <span>{{ $post->createTime() }}</span>
-                <p class="line-text">{{ $post->shortText(300) }}</p>
+                <p class="line-text">{{ $post->shortText(120) }}</p>
               </div>
             </li>
             @endforeach
           </ul>
         </div>
         <div class="header-button wow fadeInUp" data-wow-delay="1s">
-          <a href="#" class="btn btn-common" style="margin-top: 20px;">Больше новостей</a>
+          <a href="{{ route('posts') }}" class="btn btn-common" style="margin-top: 20px;">Больше новостей</a>
         </div>
       </div>
     </div>
@@ -304,20 +321,20 @@
                 <div class="contact-icon">
                   <i class="fa fa-map-marker"></i>
                 </div>
-                <p>г. Алматы, Богенбай батыра 132/ул.Панфилова 110, Блок 2, офис 208</p>
+                <p>{{$_settings->adress}}</p>
               </div>
               <div class="single-contact">
                 <div class="contact-icon">
                   <i class="fa fa-envelope"></i>
                 </div>
-                <p><a href="mailto:info@accsсhool.kz">info@accsсhool.kz</a></p>
+                <p><a href="mailto:{{$_settings->email}}">{{$_settings->email}}</a></p>
               </div>
               <div class="single-contact">
                 <div class="contact-icon">
                   <i class="fa fa-phone"></i>
                 </div>
-                <p><a href="#">+7 (727) 327 16 20</a></p>
-                <p><a href="#">+7 (777) 212 16 20</a></p>
+                <p><a href="tel:{{$_settings->phone1}}">{{$_settings->phone1}}</a></p>
+                <p><a href="tel:{{$_settings->phone2}}">{{$_settings->phone2}}</a></p>
               </div>
             </div>
           </div>
