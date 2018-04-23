@@ -1,7 +1,7 @@
 @extends('layout')
 
 
-@section('title', 'Главная')
+@section('title', 'Курсы')
 
 
 @section('hero-area')

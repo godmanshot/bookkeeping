@@ -1,8 +1,6 @@
 @extends('layout')
 
-
-@section('title', 'Главная')
-
+@section('title', 'Контакты')
 
 @section('hero-area')
 <!-- Hero Area Start -->
@@ -22,6 +20,15 @@
 <!-- Hero Area End -->
 @endsection
 
+@section('endbody')
+    @if (session('message'))
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="text/javascript">
+            swal("Спасибо {{ session('message') }}!", "Ваше сообщение отправлено.", "success");
+        </script>
+    @endif
+@endsection
+
 @section('content')
 <section id="contact" class="section-padding">
   <div class="container">
@@ -37,7 +44,17 @@
         <div class="col-md-6 col-lg-6 col-sm-12">
           <div class="contact-block">
             <h2>Свяжитесь с нами</h2>
-            <form id="contactForm" novalidate="true">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form action="{{ route('contacts.send') }}" method="POST">
+              {{ csrf_field() }}
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
@@ -47,13 +64,13 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input type="text" placeholder="Email" id="email" class="form-control" name="Почта" required>
+                    <input type="text" placeholder="Email" id="email" class="form-control" name="email" required>
                     <div class="help-block with-errors"></div>
                   </div>
                 </div>
                 <div class="col-md-12">
                   <div class="form-group">
-                    <textarea class="form-control" id="message" placeholder="Сообщение" rows="5" required></textarea>
+                    <textarea class="form-control" id="message" placeholder="Сообщение" rows="5" name="body" required></textarea>
                     <div class="help-block with-errors"></div>
                   </div>
                   <div class="submit-button">

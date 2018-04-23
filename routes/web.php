@@ -18,6 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'AboutController@index')->name('about');
 
 Route::get('/contacts', 'ContactsController@index')->name('contacts');
+Route::post('/contacts/send', 'ContactsController@send')->name('contacts.send');
 
 Route::get('/shares', 'SharesController@index')->name('shares');
 
@@ -29,8 +30,8 @@ Route::get('/services/{service}', 'ServicesController@show')->name('services.sho
 Route::get('/posts', 'PostsController@index')->name('posts');
 Route::get('/posts/{post}', 'PostsController@show')->name('posts.show');
 
-//->middleware('auth')
-Route::namespace('Admin')->prefix('admin')->group(function () {
+//
+Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function () {
 	Route::get('/', 'HomeController@index')->name('admin.home');
 	
 	Route::get('/settings', 'SettingsController@index')->name('admin.settings');

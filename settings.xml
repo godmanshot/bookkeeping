@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
     <companyName desc="Название компании">ACC School</companyName>
-    <description desc="Описание сайта"></description>
     <footer desc="Футер сайта">© 2018 Учебный центр "Школа Учета"</footer>
     <phone1 desc="Телефон 1">+7 (727) 327 16 20</phone1>
     <phone2 desc="Телефон 2">+7 (777) 212 16 20</phone2>
     <phonebtn desc="Кнопка телефон">+7 (777) 212 16 20</phonebtn>
     <adress desc="Адрес">г. Алматы, Богенбай батыра 132/ул.Панфилова 110, Блок 2, офис 208</adress>
     <email desc="Почта">info@accsсhool.kz</email>
+    <emailSend desc="Почта куда отправляются письма с формы 'Контакты'(Скрыто для всех)">godmanshot@gmail.com</emailSend>
     <coords desc="Кординаты(Ссылка https://yandex.ru/map-constructor/location-tool/)">ул. Абая, 290д</coords>
     <instagram desc="instagram">info@accsсhool.kz</instagram>
     <facebook desc="facebook">info@accsсhool.kz</facebook>

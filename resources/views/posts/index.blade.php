@@ -1,7 +1,7 @@
 @extends('layout')
 
 
-@section('title', 'Главная')
+@section('title', 'Новости')
 
 
 @section('hero-area')
@@ -23,6 +23,7 @@
 @endsection
 
 @section('content')
+
 <!-- About Section Start -->
 <section id="about" class="section-padding">
   <div class="container">
@@ -30,12 +31,25 @@
       <div class="col-md-12 col-sm-12">
         <div class="row">
           @foreach($posts as $post)
-            <div class="col-md-3">
-              <div class="course">
-                <a href="{{route('posts.show', $post)}}">
-                  <img src="{{$post->imgMiniPath()}}" class="course__image">
-                  <p class="course__name">{{$post->title}}</p>
-                </a>
+            <div class="col-md-12">
+              <div class="post-news">
+                <div class="row">
+                  <div class="col-md-2">
+                    <a href="{{route('posts.show', $post)}}">
+                      <img src="{{$post->imgMiniPath()}}" class="post-news__image">
+                    </a>
+                  </div>
+                  <div class="col-md-10">
+                    <span>{{ $post->createTime() }}</span>
+                    <a href="{{route('posts.show', $post)}}">
+                      <h4 class="post-news__title">{{$post->title}}</h4>
+                    </a>
+                    <p class="post-news__desc">{{$post->shortText(300)}}</p>
+                    <a href="{{route('posts.show', $post)}}">
+                      <p class="">Читать...</p>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           @endforeach

@@ -7,6 +7,8 @@
 
     <title>@yield('title')</title>
 
+    @yield('meta-tags')
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" >
     <!-- Fonts -->
@@ -27,6 +29,12 @@
     <link rel="icon" href="{{ asset('assets/img/logo-icon_32x32.png') }}" sizes="32x32">
     <link rel="icon" href="{{ asset('assets/img/logo-icon_192x192.png') }}" sizes="192x192">
     <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/img/logo-icon_180x180.png') }}">
+    <meta property="og:title" content="Учебный центр &quot;Школа Учета&quot; курсы бухгалтера Алматы">
+    <meta property="og:url" content="{{url('/')}}">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Школа учета, курсы бухгалтера Алматы">
+    <meta name="twitter:title" content="Учебный центр &quot;Школа Учета&quot; курсы бухгалтера Алматы">
+    <meta name="twitter:description" content="Школа учета, курсы бухгалтера Алматы">
 
         @yield('endhead')
 
@@ -73,6 +81,11 @@
                 </a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="{{route('posts')}}">
+                  Новости
+                </a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="{{route('offer')}}">
                   Оферта
                 </a>
@@ -99,6 +112,9 @@
           </li>
           <li>
             <a href="{{route('services')}}">Курсы</a>
+          </li>
+          <li>
+            <a href="{{route('posts')}}">Новости</a>
           </li>
           <li>
             <a href="{{route('offer')}}">Оферта</a>
