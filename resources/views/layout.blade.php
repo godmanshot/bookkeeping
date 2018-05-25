@@ -84,27 +84,13 @@
 
         <!-- Mobile Menu Start -->
         <ul class="onepage-nev mobile-menu">
-          <li>
-            <a href="{{route('home')}}">Главная</a>
-          </li>
-          <li>
-            <a href="{{url('about')}}">О нас</a>
-          </li>
-          <li>
-            <a href="{{url('shares')}}">Акции</a>
-          </li>
-          <li>
-            <a href="{{url('services')}}">Курсы</a>
-          </li>
-          <li>
-            <a href="{{url('posts')}}">Новости</a>
-          </li>
-          <li>
-            <a href="{{url('offer')}}">Оферта</a>
-          </li>
-          <li>
-            <a href="{{url('contacts')}}">Контакты</a>
-          </li>
+          @foreach($menu as $point)
+            <li>
+              <a href="{{$point->ref}}">
+                {{$point->title}}
+              </a>
+            </li>
+          @endforeach
         </ul>
         <!-- Mobile Menu End -->
       </nav>

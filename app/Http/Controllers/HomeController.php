@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Gallery;
 use App\Post;
 use App\Service;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class HomeController extends Controller
     {
         return view('index', [
             'posts' => Post::latest()->limit(3)->get(),
-            'services' => Service::latest()->get()
+            'services' => Service::latest()->get(),
+            'photos' => Gallery::latest()->limit(6)->get()
         ]);
     }
 }

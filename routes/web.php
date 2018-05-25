@@ -22,6 +22,7 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contacts', 'ContactsController@index')->name('contacts');
 Route::post('/contacts/send', 'ContactsController@send')->name('contacts.send');
 
+Route::get('/gallery', 'GalleryController@index')->name('gallery');
 
 Route::get('/services', 'ServicesController@index')->name('services');
 Route::get('/services/{service}', 'ServicesController@show')->name('services.show');
@@ -37,6 +38,16 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function (
 
 	Route::get('/blocks', 'SiteBlocksController@index')->name('admin.info_blocks');
 	Route::post('/blocks', 'SiteBlocksController@store')->name('admin.info_blocks.store');
+
+	Route::resource('gallery', 'GalleryController', ['names' => [
+	    'index' => 'admin.gallery',
+	    'create' => 'admin.gallery.create',
+	    'store' => 'admin.gallery.store',
+	    'show' => 'admin.gallery.show',
+	    'edit' => 'admin.gallery.edit',
+	    'update' => 'admin.gallery.update',
+	    'destroy' => 'admin.gallery.destroy',
+	]]);
 
 	Route::resource('menu', 'MenuController', ['names' => [
 	    'index' => 'admin.menu',
