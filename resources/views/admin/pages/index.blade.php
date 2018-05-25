@@ -25,7 +25,6 @@
                       <h3 class="h4">Страницы</h3>
                     </div>
                     <div class="card-body">
-                      <a href="{{ route('admin.pages.create') }}" class="btn btn-primary" style="margin-bottom: 10px;">Создать</a>
                       <table class="table table-striped table-hover">
                         <thead>
                           <tr>
@@ -41,7 +40,6 @@
                               <td>{{ $page->title }}</td>
                               <td>
                                   <a href="{{ route('admin.pages.edit', $page) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                  <form action="{{ route('admin.pages.destroy', $page) }}" method="POST" style="display: inline;">{{ csrf_field() }} {{ method_field('delete') }} <a href="javascript:;" onclick="confirm('Вы уверены?') ? parentNode.submit() : false;"><i class="fa fa-trash" aria-hidden="true"></i></a></form>
                               </td>
                             </tr>
                           @endforeach

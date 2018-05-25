@@ -40,7 +40,7 @@
                 <div class="col-lg-12">
                   <div class="card">
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">Запись</h3>
+                      <h3 class="h4">{{ $page->title }}</h3>
                     </div>
                     <div class="card-body">
                       @if ($errors->any())
@@ -55,13 +55,7 @@
                       <form class="form-horizontal" action="{{ route('admin.pages.update', $page) }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('patch') }}
-                        <div class="form-group row">
-                          <label for="pages-name" class="col-sm-3 form-control-label">Заголовок</label>
-                          <div class="col-sm-9">
-                            <input id="pages-name" type="text" name="title" required class="form-control" value="{{ $page->title }}">
-                          </div>
-                        </div>
-                        <div class="line"></div>
+                        <input id="pages-name" type="hidden" name="title" required class="form-control" value="{{ $page->title }}">
                         <div class="form-group row">
                           <label for="pages-body" class="col-sm-3 form-control-label">Текст</label>
                           <div class="col-sm-9">

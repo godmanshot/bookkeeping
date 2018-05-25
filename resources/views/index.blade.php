@@ -5,6 +5,7 @@
 @section('endhead')
     <link rel="stylesheet" type="text/css" href="dist/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="dist/slick/slick-theme.css"/>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 @endsection
 
 @section('endbody')
@@ -46,6 +47,26 @@
             ]
         });
     });
+		
+		
+        ymaps.ready(init);
+        var myMap, 
+            myPlacemark;
+
+        function init(){ 
+            myMap = new ymaps.Map("map", {
+                center: [{{$_settings->coords}}],
+                zoom: 17
+            }); 
+            
+            myPlacemark = new ymaps.Placemark([{{$_settings->coords}}], {
+                hintContent: 'Мы тут!',
+                balloonContent: 'Мы тут'
+            });
+            
+            myMap.geoObjects.add(myPlacemark);
+        }
+    
     </script>
 
     @if (session('message'))
@@ -72,17 +93,17 @@
           <ul class="social-icon wow fadeInUp" data-wow-delay="0.8s">
             @if(!empty((string)$_settings->instagram))
               <li>
-                <a class="instagram" href="{{$_settings->instagram}}"><i class="icon-social-instagram"></i></a>
+                <a class="instagram" href="https://www.instagram.com/{{$_settings->instagram}}"><i class="icon-social-instagram"></i></a>
               </li>
             @endif
             @if(!empty((string)$_settings->facebook))
               <li>
-                <a class="facebook" href="{{$_settings->facebook}}"><i class="icon-social-facebook"></i></a>
+                <a class="facebook" href="https://www.facebook.com/{{$_settings->facebook}}"><i class="icon-social-facebook"></i></a>
               </li>
             @endif
             @if(!empty((string)$_settings->vkontakte))
               <li>
-                <a class="vkontakte" href="{{$_settings->vkontakte}}"><i class="icon-social-vkontakte"></i></a>
+                <a class="vkontakte" href="https://vk.com/{{$_settings->vkontakte}}"><i class="icon-social-vkontakte"></i></a>
               </li>
             @endif
             @if(!empty((string)$_settings->phonebtn))
@@ -158,7 +179,7 @@
 <section id="portfolios" class="section-padding">
   <!-- Container Starts -->
   <div class="container">
-    <h2 class="section-title wow flipInX" data-wow-delay="0.4s">Гарелея</h2>
+    <h2 class="section-title wow flipInX" data-wow-delay="0.4s">Галерея</h2>
     <div class="row">
       <!-- Portfolio Recent Projects -->
       <div id="portfolio" class="row wow fadeInDown" data-wow-delay="0.4s">
@@ -355,7 +376,7 @@
           </div>
         </div>
         <div class="col-md-12">
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0b4dabb49e1bd6b2f5a1a1476400563a7e21ad7ea17083a2157fdead1bc490ba&amp;source=constructor" width="100%" height="400" frameborder="0" style="margin-top: 20px;"></iframe>
+          <div id="map" style="width:100%;height:400px;margin-top: 20px;"></div>
         </div>
       </div>
     </div>

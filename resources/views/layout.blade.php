@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="ru">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -8,6 +8,17 @@
     <title>@yield('title')</title>
 
     @yield('meta-tags')
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111546355-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-111546355-5');
+    </script>
+
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" >
@@ -145,17 +156,17 @@
               <ul class="social-icon">
                 @if(!empty((string)$_settings->instagram))
                   <li>
-                    <a class="instagram" href="{{$_settings->instagram}}"><i class="icon-social-instagram"></i></a>
+                    <a class="instagram" href="https://www.instagram.com/{{$_settings->instagram}}"><i class="icon-social-instagram"></i></a>
                   </li>
                 @endif
                 @if(!empty((string)$_settings->facebook))
                   <li>
-                    <a class="facebook" href="{{$_settings->facebook}}"><i class="icon-social-facebook"></i></a>
+                    <a class="facebook" href="https://www.facebook.com/{{$_settings->facebook}}"><i class="icon-social-facebook"></i></a>
                   </li>
                 @endif
                 @if(!empty((string)$_settings->vkontakte))
                   <li>
-                    <a class="vkontakte" href="{{$_settings->vkontakte}}"><i class="icon-social-vkontakte"></i></a>
+                    <a class="vkontakte" href="https://vk.com/{{$_settings->vkontakte}}"><i class="icon-social-vkontakte"></i></a>
                   </li>
                 @endif
                 @if(!empty((string)$_settings->phonebtn))

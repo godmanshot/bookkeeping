@@ -13,7 +13,6 @@ class SettingsController extends Controller
 
 
 	public function store(Request $request) {
-
 		$site_settings = resolve('site-setting');
 
 		foreach($site_settings->getInstance() as $idx => $val)

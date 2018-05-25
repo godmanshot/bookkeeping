@@ -20,7 +20,30 @@
 <!-- Hero Area End -->
 @endsection
 
+@section('endhead')
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+@endsection
+
 @section('endbody')
+    <script type="text/javascript">
+        ymaps.ready(init);
+        var myMap, 
+            myPlacemark;
+
+        function init(){ 
+            myMap = new ymaps.Map("map", {
+                center: [{{$_settings->coords}}],
+                zoom: 17
+            }); 
+            
+            myPlacemark = new ymaps.Placemark([{{$_settings->coords}}], {
+                hintContent: 'Мы тут!',
+                balloonContent: 'Мы тут'
+            });
+            
+            myMap.geoObjects.add(myPlacemark);
+        }
+    </script>
     @if (session('message'))
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript">
@@ -110,7 +133,7 @@
           </div>
         </div>
         <div class="col-md-12">
-          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A0b4dabb49e1bd6b2f5a1a1476400563a7e21ad7ea17083a2157fdead1bc490ba&amp;source=constructor" width="100%" height="400" frameborder="0" style="margin-top: 20px;"></iframe>
+          <div id="map" style="width:100%;height:400px;margin-top: 20px;"></div>
         </div>
       </div>
     </div>
