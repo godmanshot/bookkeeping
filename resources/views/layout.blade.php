@@ -175,6 +175,11 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
       
         @yield('endbody')
-        
+    <!-- RedConnect -->
+    <script id="rhlpscrtg" type="text/javascript" charset="utf-8" async="async"
+    src="https://web.redhelper.ru/service/main.js?c=buh77721216201"></script>
+    <div style="display: none"><a class="rc-copyright" 
+    href="http://redconnect.ru">Сервис звонка с сайта RedConnect</a></div>
+    <!--/RedConnect -->
   </body>
 </html>
