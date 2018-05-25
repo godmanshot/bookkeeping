@@ -71,41 +71,13 @@
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="onepage-nev navbar-nav mr-auto w-100 justify-content-end clearfix">
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('home')}}">
-                  Главная
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('about')}}">
-                  О нас
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('shares')}}">
-                  Акции
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('services')}}">
-                  Курсы
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('posts')}}">
-                  Новости
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('offer')}}">
-                  Оферта
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{route('contacts')}}">
-                  Контакты
-                </a>
-              </li>
+              @foreach($menu as $point)
+                <li class="nav-item">
+                  <a class="nav-link" href="{{$point->ref}}">
+                    {{$point->title}}
+                  </a>
+                </li>
+              @endforeach
             </ul>
           </div>
         </div>
@@ -116,22 +88,22 @@
             <a href="{{route('home')}}">Главная</a>
           </li>
           <li>
-            <a href="{{route('about')}}">О нас</a>
+            <a href="{{url('about')}}">О нас</a>
           </li>
           <li>
-            <a href="{{route('shares')}}">Акции</a>
+            <a href="{{url('shares')}}">Акции</a>
           </li>
           <li>
-            <a href="{{route('services')}}">Курсы</a>
+            <a href="{{url('services')}}">Курсы</a>
           </li>
           <li>
-            <a href="{{route('posts')}}">Новости</a>
+            <a href="{{url('posts')}}">Новости</a>
           </li>
           <li>
-            <a href="{{route('offer')}}">Оферта</a>
+            <a href="{{url('offer')}}">Оферта</a>
           </li>
           <li>
-            <a href="{{route('contacts')}}">Контакты</a>
+            <a href="{{url('contacts')}}">Контакты</a>
           </li>
         </ul>
         <!-- Mobile Menu End -->

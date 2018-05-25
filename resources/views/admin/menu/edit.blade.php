@@ -1,35 +1,19 @@
 @extends('admin.layouts.app')
 
-@section('endhead')
-<link href="{{asset('admin-dist/summernote/summernote-lite.css')}}" rel="stylesheet">
-@endsection
-
-@section('endbody')
-<script src="{{asset('admin-dist/summernote/summernote-lite.js')}}"></script>
-<script>
-  $(document).ready(function() {
-    $('#pages-body').summernote({
-      lang: 'ru-RU',
-      minHeight: 300
-    });
-  });
-</script>
-@endsection
-
 @section('content')
 
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Страницы</h2>
+              <h2 class="no-margin-bottom">Меню</h2>
             </div>
           </header>
           <!-- Breadcrumb-->
           <ul class="breadcrumb">
             <div class="container-fluid">
               <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Главная</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('admin.pages') }}">Страницы</a></li>
-              <li class="breadcrumb-item active">{{ $page->title }}</li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.menu') }}">Меню</a></li>
+              <li class="breadcrumb-item active">{{ $menu->title }}</li>
             </div>
           </ul>
           <!-- Forms Section-->
@@ -40,7 +24,7 @@
                 <div class="col-lg-12">
                   <div class="card">
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">{{ $page->title }}</h3>
+                      <h3 class="h4">{{ $menu->title }}</h3>
                     </div>
                     <div class="card-body">
                       @if ($errors->any())
@@ -52,27 +36,39 @@
                               </ul>
                           </div>
                       @endif
-                      <form class="form-horizontal" action="{{ route('admin.pages.update', $page) }}" method="POST" enctype="multipart/form-data">
+                      <form class="form-horizontal" action="{{ route('admin.menu.update', $menu) }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         {{ method_field('patch') }}
                         <div class="form-group row">
-                          <label for="pages-url" class="col-sm-3 form-control-label">Ссылка</label>
+                          <label for="menus-page_id" class="col-sm-3 form-control-label">Страница</label>
                           <div class="col-sm-9">
-                            <input id="pages-url" type="text" name="url" required class="form-control" value="{{ $page->url }}">
+                          <select id="menus-page_id" class="form-control" name="page_id">
+                            <option value="" selected>Выберите страницу</option>
+                            @foreach($pages as $page)
+                              <option value="{{$page->id}}" {{isset($menu) && $menu->page_id == $page->id ? 'selected' : ''}}>{{$page->title}}</option>
+                            @endforeach
+                          </select>
                           </div>
                         </div>
                         <div class="line"></div>
                         <div class="form-group row">
-                          <label for="pages-name" class="col-sm-3 form-control-label">Заголовок</label>
+                          <label for="menus-url" class="col-sm-3 form-control-label">Ссылка</label>
                           <div class="col-sm-9">
-                            <input id="pages-name" type="text" name="title" required class="form-control" value="{{ $page->title }}">
+                            <input id="menus-url" type="text" name="url" class="form-control" value="{{ $menu->url }}">
                           </div>
                         </div>
                         <div class="line"></div>
                         <div class="form-group row">
-                          <label for="pages-body" class="col-sm-3 form-control-label">Текст</label>
+                          <label for="menus-name" class="col-sm-3 form-control-label">Заголовок</label>
                           <div class="col-sm-9">
-                              <textarea id="pages-body" name="content" class="form-control" placeholder="Текст">{{ $page->content }}</textarea>
+                            <input id="menus-name" type="text" name="title" required class="form-control" value="{{ $menu->title }}">
+                          </div>
+                        </div>
+                        <div class="line"></div>
+                        <div class="form-group row">
+                          <label for="menus-place" class="col-sm-3 form-control-label">Место</label>
+                          <div class="col-sm-9">
+                            <input id="menus-place" type="text" name="place" required class="form-control" value="{{ $menu->place }}">
                           </div>
                         </div>
                         <div class="line"></div>

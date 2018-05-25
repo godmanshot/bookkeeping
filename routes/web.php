@@ -15,14 +15,13 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/about', 'AboutController@index')->name('about');
+// Route::get('/about', 'AboutController@index')->name('about');
+// Route::get('/shares', 'SharesController@index')->name('shares');
+// Route::get('/offer', 'OfferController@index')->name('offer');
 
 Route::get('/contacts', 'ContactsController@index')->name('contacts');
 Route::post('/contacts/send', 'ContactsController@send')->name('contacts.send');
 
-Route::get('/shares', 'SharesController@index')->name('shares');
-
-Route::get('/offer', 'OfferController@index')->name('offer');
 
 Route::get('/services', 'ServicesController@index')->name('services');
 Route::get('/services/{service}', 'ServicesController@show')->name('services.show');
@@ -30,7 +29,6 @@ Route::get('/services/{service}', 'ServicesController@show')->name('services.sho
 Route::get('/posts', 'PostsController@index')->name('posts');
 Route::get('/posts/{post}', 'PostsController@show')->name('posts.show');
 
-//
 Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function () {
 	Route::get('/', 'HomeController@index')->name('admin.home');
 	
@@ -40,7 +38,15 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function (
 	Route::get('/blocks', 'SiteBlocksController@index')->name('admin.info_blocks');
 	Route::post('/blocks', 'SiteBlocksController@store')->name('admin.info_blocks.store');
 
-
+	Route::resource('menu', 'MenuController', ['names' => [
+	    'index' => 'admin.menu',
+	    'create' => 'admin.menu.create',
+	    'store' => 'admin.menu.store',
+	    'show' => 'admin.menu.show',
+	    'edit' => 'admin.menu.edit',
+	    'update' => 'admin.menu.update',
+	    'destroy' => 'admin.menu.destroy',
+	]]);
 
 	Route::resource('services', 'ServicesController', ['names' => [
 	    'index' => 'admin.services',
@@ -74,3 +80,6 @@ Route::namespace('Admin')->prefix('admin')->middleware('auth')->group(function (
 
 });
 
+
+
+Route::get('/{url}', 'PageController@index');

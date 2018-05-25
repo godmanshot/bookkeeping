@@ -1,34 +1,18 @@
 @extends('admin.layouts.app')
 
-@section('endhead')
-<link href="{{asset('admin-dist/summernote/summernote-lite.css')}}" rel="stylesheet">
-@endsection
-
-@section('endbody')
-<script src="{{asset('admin-dist/summernote/summernote-lite.js')}}"></script>
-<script>
-  $(document).ready(function() {
-    $('#pages-body').summernote({
-      lang: 'ru-RU',
-      minHeight: 300
-    });
-  });
-</script>
-@endsection
-
 @section('content')
 
           <!-- Page Header-->
           <header class="page-header">
             <div class="container-fluid">
-              <h2 class="no-margin-bottom">Страницы</h2>
+              <h2 class="no-margin-bottom">Меню</h2>
             </div>
           </header>
           <!-- Breadcrumb-->
           <ul class="breadcrumb">
             <div class="container-fluid">
               <li class="breadcrumb-item"><a href="{{ route('admin.home') }}">Главная</a></li>
-              <li class="breadcrumb-item"><a href="{{ route('admin.pages') }}">Страницы</a></li>
+              <li class="breadcrumb-item"><a href="{{ route('admin.menu') }}">Меню</a></li>
               <li class="breadcrumb-item active">Новая запись</li>
             </div>
           </ul>
@@ -52,20 +36,31 @@
                               </ul>
                           </div>
                       @endif
-                      <form class="form-horizontal" action="{{ route('admin.pages.store') }}" method="POST" enctype="multipart/form-data">
+                      <form class="form-horizontal" action="{{ route('admin.menu.store') }}" method="POST" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
                           <div class="col-sm-12">
+                            <div class="form-group">
+                              <label class="form-control-label">Страница</label>
+                              <select class="form-control" name="page_id">
+                                <option value="" selected>Выберите страницу</option>
+                                @foreach($pages as $page)
+                                  <option value="{{$page->id}}">{{$page->title}}</option>
+                                @endforeach
+                              </select>
+                            </div>
+                            ИЛИ
                             <div class="form-group-material">
-                              <input id="pages-url" type="text" name="url" required class="input-material">
-                              <label for="pages-url" class="label-material">Ссылка</label>
+                              <input id="menu-url" type="text" name="url" class="input-material">
+                              <label for="menu-url" class="label-material">Ссылка</label>
                             </div>
                             <div class="form-group-material">
-                              <input id="pages-name" type="text" name="title" required class="input-material">
-                              <label for="pages-name" class="label-material">Заголовок</label>
+                              <input id="menu-title" type="text" name="title" required class="input-material">
+                              <label for="menu-title" class="label-material">Заголовок</label>
                             </div>
-                            <div class="form-group-material" style="padding-left: 30px;">
-                              <textarea id="pages-body" name="content" class="form-control" placeholder="Текст"></textarea>
+                            <div class="form-group-material">
+                              <input id="menu-place" type="number" name="place" required class="input-material">
+                              <label for="menu-place" class="label-material">Место</label>
                             </div>
                           </div>
                         </div>

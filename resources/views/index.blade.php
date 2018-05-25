@@ -113,7 +113,7 @@
             @endif
           </ul>
           <div class="header-button wow fadeInUp" data-wow-delay="1s">
-            <a href="{{route('about')}}" class="btn btn-common">О нас</a>
+            <a href="{{url('about')}}" class="btn btn-common">О нас</a>
             <a href="{{route('services')}}" class="btn btn-common">Курсы</a>
           </div>
         </div>

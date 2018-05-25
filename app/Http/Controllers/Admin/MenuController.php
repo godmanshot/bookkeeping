@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Menu;
 use App\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
-class PagesController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,8 @@ class PagesController extends Controller
      */
     public function index()
     {
-        $pages = Page::latest()->paginate(20);
-        return view('admin.pages.index', compact('pages'));
+        $menu = Menu::orderBy('place')->get();
+        return view('admin.menu.index', compact('menu'));
     }
 
     /**
@@ -28,7 +29,8 @@ class PagesController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.create');
+        $pages = Page::all();
+        return view('admin.menu.create', compact('pages'));
     }
 
     /**
@@ -40,66 +42,67 @@ class PagesController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'url' => 'required',
             'title' => 'required',
-            'content' => 'required',
+            'place' => 'required',
         ]);
 
-        $page = Page::create([
-            'url' => $request->url,
+        $menu = Menu::create([
+            'url' => !empty($request->input('url')) ? $request->input('url') : '',
             'title' => $request->title,
-            'content' => $request->content,
+            'page_id' => !empty($request->input('page_id')) ? $request->input('page_id') : null,
+            'place' => $request->place,
         ]);
 
-        return redirect()->route('admin.pages');
+        return redirect()->route('admin.menu');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\page  $page
+     * @param  \App\menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function edit(page $page)
+    public function edit(Menu $menu)
     {
-        return view('admin.pages.edit', compact('page'));
+        $pages = Page::all();
+        return view('admin.menu.edit', compact('menu', 'pages'));
     }
 
     // *
     //  * Update the specified resource in storage.
     //  *
     //  * @param  \Illuminate\Http\Request  $request
-    //  * @param  \App\page  $page
+    //  * @param  \App\menu  $menu
     //  * @return \Illuminate\Http\Response
      
-    public function update(Request $request, page $page)
+    public function update(Request $request, Menu $menu)
     {
         $request->validate([
-            'url' => 'required',
             'title' => 'required',
-            'content' => 'required',
+            'place' => 'required',
         ]);
 
-        $page->fill([
-            'url' => $request->url,
+        $menu->fill([
+            'url' => !empty($request->input('url')) ? $request->input('url') : '',
             'title' => $request->title,
-            'content' => $request->content,
+            'page_id' => !empty($request->input('page_id')) ? $request->input('page_id') : null,
+            'place' => $request->place,
         ]);
 
-        $page->save();
+        $menu->save();
 
-        return redirect()->route('admin.pages');
+        return redirect()->route('admin.menu');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\page  $page
+     * @param  \App\menu  $menu
      * @return \Illuminate\Http\Response
      */
-    public function destroy(page $page)
+    public function destroy(Menu $menu)
     {
-        $page->delete();
-        return redirect()->route('admin.pages');
+        $menu->delete();
+        return redirect()->route('admin.menu');
     }
 }

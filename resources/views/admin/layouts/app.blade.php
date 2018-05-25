@@ -78,6 +78,7 @@
             <li><a href="{{ route('admin.services') }}"><i class="fa fa-bars"></i>Курсы</a></li>
             <li><a href="{{ route('admin.posts') }}"><i class="fa fa-bars"></i>Новости</a></li>
             <li><a href="{{ route('admin.pages') }}"><i class="fa fa-bars"></i>Страницы</a></li>
+            <li><a href="{{ route('admin.menu') }}"><i class="fa fa-bars"></i>Меню</a></li>
         </nav>
         <div class="content-inner">
           
