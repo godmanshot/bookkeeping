@@ -67,7 +67,9 @@
               <span class="icon-menu"></span>
               <span class="icon-menu"></span>
             </button>
-            <a href="{{route('home')}}" class="navbar-brand"><img src="{{ asset('assets/img/logo.png') }}" alt=""></a>
+            <span class="navbar-brand">
+            <a href="{{route('home')}}"><img src="{{ asset('assets/img/logo.png') }}" alt=""></a> <a class="phonebtn" href="tel:{{$_settings->phonebtn}}">{{$_settings->phonebtn}}</a>
+            </span>
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
             <ul class="onepage-nev navbar-nav mr-auto w-100 justify-content-end clearfix">
@@ -109,6 +111,56 @@
     <footer class="footer-area section-padding">
       <div class="container">
         <div class="row">
+          <div class="col-md-4">
+            <img src="{{ asset('assets/img/logo-icon_192x192.png') }}" alt="" style="width: 150px;">
+            <p style="color: #c7c7c7;">"Школа учета" курсы бухгалтера в Алматы</p>
+          </div>
+          <div class="col-md-2">
+            <p style="color: #fff;font-size: 20px;margin-bottom: 20px;">Меню</p>
+            <ul style="margin-bottom: 20px;">
+              @foreach($menu as $point)
+                <li>
+                  <a href="{{$point->ref}}" style="color: #c7c7c7;">
+                    {{$point->title}}
+                  </a>
+                </li>
+              @endforeach
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <p style="color: #fff;font-size: 20px;margin-bottom: 20px;">Курсы</p>
+            <ul style="margin-bottom: 20px;">
+              @foreach($services as $service)
+                <li>
+                  <a href="{{route('services.show', $service)}}" style="color: #c7c7c7;">
+                    {{$service->name}}
+                  </a>
+                </li>
+              @endforeach
+              <li style="margin-top: 10px;">
+                <a href="{{route('services')}}" style="color: #c7c7c7;">
+                  Больше курсов
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <p style="color: #fff;font-size: 20px;margin-bottom: 20px;">Новости</p>
+            <ul style="margin-bottom: 20px;">
+              @foreach($posts as $post)
+                <li>
+                  <a href="{{route('posts.show', $post)}}" style="color: #c7c7c7;">
+                    {{$post->title}}
+                  </a>
+                </li>
+              @endforeach
+              <li style="margin-top: 10px;">
+                <a href="{{route('posts')}}" style="color: #c7c7c7;">
+                  Больше новостей
+                </a>
+              </li>
+            </ul>
+          </div>
           <div class="col-md-12">
             <div class="footer-text text-center wow fadeInDown" data-wow-delay="0.3s">
               <ul class="social-icon">

@@ -31,8 +31,8 @@ class ServicesController extends Controller
         ]);
 
         $path = $request->file('img')->store('img/services', 'public');
-        Image::make('storage/'.$path)->fit(250, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg')->destroy();
-        Image::make('storage/'.$path)->fit(1920, 700)->save()->destroy();
+        Image::make('storage/'.$path)->fit(250, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg', 50)->destroy();
+        Image::make('storage/'.$path)->fit(1920, 700)->save(null, 50)->destroy();
 
         $service = Service::create([
             'name' => $request->name,
@@ -64,8 +64,8 @@ class ServicesController extends Controller
         	Storage::disk('public')->delete(str_replace(".jpeg", "", $service->img).'-min.jpeg');
 
             $path = $request->file('img')->store('img/services', 'public');
-            Image::make('storage/'.$path)->fit(250, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg')->destroy();
-			Image::make('storage/'.$path)->fit(1920, 700)->save()->destroy();
+            Image::make('storage/'.$path)->fit(250, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg', 50)->destroy();
+			Image::make('storage/'.$path)->fit(1920, 700)->save(null, 50)->destroy();
 
             $service->img = $path;
 

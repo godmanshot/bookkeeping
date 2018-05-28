@@ -684,7 +684,10 @@ a.back-to-top:hover, a.back-to-top:focus {
     top: 0;
   }
   .navbar-brand img {
-    width: 50%;
+    width: 100px;
+  }
+  .top-nav-collapse .navbar-brand img {
+    width: 100px;
   }
   #mobile-menu {
     display: none;

@@ -30,8 +30,8 @@ class PostsController extends Controller
 		]);
 
         $path = $request->file('img')->store('img/posts', 'public');
-        Image::make('storage/'.$path)->fit(250, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg')->destroy();
-        Image::make('storage/'.$path)->fit(1920, 700)->save()->destroy();
+        Image::make('storage/'.$path)->fit(250, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg', 50)->destroy();
+        Image::make('storage/'.$path)->fit(1920, 700)->save(null, 50)->destroy();
 
         $post = Post::create([
             'title' => $request->title,
@@ -63,8 +63,8 @@ class PostsController extends Controller
 
             $path = $request->file('img')->store('img/posts', 'public');
 
-            Image::make('storage/'.$path)->fit(250, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg')->destroy();
-            Image::make('storage/'.$path)->fit(1920, 700)->save()->destroy();
+            Image::make('storage/'.$path)->fit(250, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg', 50)->destroy();
+            Image::make('storage/'.$path)->fit(1920, 700)->save(null, 50)->destroy();
 
             $post->img = $path;
 

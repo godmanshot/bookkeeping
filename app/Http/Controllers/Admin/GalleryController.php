@@ -29,7 +29,7 @@ class GalleryController extends Controller
 		]);
 
         $path = $request->file('img')->store('img/gallery', 'public');
-        Image::make('storage/'.$path)->fit(370, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg')->destroy();
+        Image::make('storage/'.$path)->fit(370, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg', 50)->destroy();
         Image::make('storage/'.$path)->fit(1200, 720)->save()->destroy();
 
         $photo = Gallery::create([
@@ -55,7 +55,7 @@ class GalleryController extends Controller
 
         $path = $request->file('img')->store('img/gallery', 'public');
 
-        Image::make('storage/'.$path)->fit(370, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg')->destroy();
+        Image::make('storage/'.$path)->fit(370, 250)->save('storage/'.str_replace(".jpeg", "", $path).'-min.jpeg', 50)->destroy();
         Image::make('storage/'.$path)->fit(1200, 720)->save()->destroy();
 
         $gallery->img = $path;
