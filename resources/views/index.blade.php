@@ -5,10 +5,10 @@
 @section('endhead')
     <link rel="stylesheet" type="text/css" href="dist/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="dist/slick/slick-theme.css"/>
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 @endsection
 
 @section('endbody')
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script type="text/javascript" src="dist/slick/slick.min.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){

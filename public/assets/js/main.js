@@ -3,18 +3,18 @@
   "use strict";  
 
   $(window).on('load', function() {
-
-    /* 
-   MixitUp
-   ========================================================================== */
-  $('#portfolio').mixItUp();
-
+    /* slicknav mobile menu active  */
+    $('.mobile-menu').slicknav({
+      prependTo: '.navbar-header',
+      parentTag: 'liner',
+      allowParentLinks: true,
+      duplicate: true,
+      label: '',
+      closedSymbol: '<i class="icon-arrow-right"></i>',
+      openedSymbol: '<i class="icon-arrow-down"></i>',
+    });
   
-  /*Page Loader active
-    ========================================================*/
-    $('#preloader').fadeOut();
 
-  // Sticky Nav
     $(window).on('scroll', function() {
         if ($(window).scrollTop() > 200) {
             $('.scrolling-navbar').addClass('top-nav-collapse');
@@ -23,43 +23,22 @@
         }
     });
 
-    /* slicknav mobile menu active  */
-    $('.mobile-menu').slicknav({
-        prependTo: '.navbar-header',
-        parentTag: 'liner',
-        allowParentLinks: true,
-        duplicate: true,
-        label: '',
-        closedSymbol: '<i class="icon-arrow-right"></i>',
-        openedSymbol: '<i class="icon-arrow-down"></i>',
-      });
-
-      /* WOW Scroll Spy
-    ========================================================*/
-     var wow = new WOW({
-      //disabled for mobile
-        mobile: false
-    });
-
-    wow.init();
-
     /* Nivo Lightbox 
     ========================================================*/
     $('.lightbox').nivoLightbox({
-        effect: 'fadeScale',
-        keyboardNav: true,
-      });
-
-    /* Counter
-    ========================================================*/
-    $('.counterUp').counterUp({
-     delay: 10,
-     time: 1000
+      effect: 'fadeScale',
+      keyboardNav: true,
     });
-
 
     /* Back Top Link active
     ========================================================*/
+
+      var wow = new WOW({
+        //disabled for mobile
+          mobile: false
+      });
+      wow.init();
+
       var offset = 200;
       var duration = 500;
       $(window).scroll(function() {
@@ -77,8 +56,6 @@
         }, 600);
         return false;
       });
-
-
 
   });      
 

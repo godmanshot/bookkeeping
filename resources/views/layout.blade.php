@@ -54,6 +54,16 @@
 
         @yield('beginbody')
 
+    <style type="text/css">
+      .header__phonebtn {
+          display: initial;
+      }
+      @media(min-width: 992px) {
+        .header__phonebtn {
+          display: none;
+        }
+      }
+    </style>
     <!-- Header Area wrapper Starts -->
     <header id="header-wrap">
       <!-- Navbar Start -->
@@ -68,7 +78,7 @@
               <span class="icon-menu"></span>
             </button>
             <span class="navbar-brand">
-            <a href="{{route('home')}}"><img src="{{ asset('assets/img/logo.png') }}" alt=""></a> <a class="phonebtn" href="tel:{{$_settings->phonebtn}}">{{$_settings->phonebtn}}</a>
+            <a href="{{route('home')}}"><img src="{{ asset('assets/img/logo.png') }}" alt=""></a> <a class="header__phonebtn" href="tel:{{$_settings->phonebtn}}">{{$_settings->phonebtn}}</a>
             </span>
           </div>
           <div class="collapse navbar-collapse" id="main-navbar">
@@ -200,19 +210,15 @@
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{{ asset('assets/js/jquery-min.js') }}"></script>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.mixitup.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.counterup.min.js') }}"></script>
-    <script src="{{ asset('assets/js/waypoints.min.js') }}"></script>
-    <script src="{{ asset('assets/js/wow.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.nav.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.easing.min.js') }}"></script>  
     <script src="{{ asset('assets/js/nivo-lightbox.js') }}"></script>
+    <script src="{{ asset('assets/js/wow.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
       
         @yield('endbody')
+        
     <!-- RedConnect -->
     <script id="rhlpscrtg" type="text/javascript" charset="utf-8" async="async"
     src="https://web.redhelper.ru/service/main.js?c=buh77721216201"></script>
