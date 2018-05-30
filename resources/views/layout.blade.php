@@ -19,22 +19,15 @@
       gtag('config', 'UA-111546355-5');
     </script>
 
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/assets.css') }}" >
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}" >
     <!-- Fonts -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/font-awesome.min.css') }}">
     <!-- Icon -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/simple-line-icons.css') }}">
-    <!-- Slicknav -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/slicknav.css') }}">
-    <!-- Nivo Lightbox -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/nivo-lightbox.css') }}" >
-    <!-- Animate -->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.css') }}">
+
     <!-- Main Style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }}">
-    <!-- Responsive Style -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 
     <link rel="icon" href="{{ asset('assets/img/logo-icon_32x32.png') }}" sizes="32x32">
@@ -209,12 +202,8 @@
     </a>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="{{ asset('assets/js/jquery-min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.mixitup.js') }}"></script>
-    <script src="{{ asset('assets/js/nivo-lightbox.js') }}"></script>
-    <script src="{{ asset('assets/js/wow.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('assets/assets.js') }}"></script>
+    
     <script src="{{ asset('assets/js/main.js') }}"></script>
       
         @yield('endbody')
